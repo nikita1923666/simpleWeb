@@ -3,11 +3,27 @@
  */
 var express = require('express');
 var buble = require('./buble');
+var fs = require('fs');
 
 var ooo = express();
 
 ooo.get('/', function (req, res) {
-    res.send('This is sort machine!');
+    var text = fs.readFileSync('index.html', 'UTF-8');
+    res.send(text);
+});
+
+ooo.get('/sort.html', function (req, res) {
+    var array = req.query.array.split(',');
+    
+    for(var z = 0;z<array.length;z++){
+       array[z] = parseInt(array[z]);
+    }
+    var order = buble.sort(array);
+    var result = order.join(',');
+
+    var text = fs.readFileSync('result.html', 'UTF-8');
+    text = text.replace('{{result}}', result);
+    res.send(text);
 });
 
 ooo.get('/sort/:array', function (req, res) {
