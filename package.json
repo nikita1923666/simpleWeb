@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "repository": "https://github.com/nikita1923666/simpleWeb.git",
   "license": "MIT",
-  "main": "app.js",
+  "main": "ooo.js",
   "dependencies": {
     "express": "^4.15.3"
   }
