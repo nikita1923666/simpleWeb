@@ -18,20 +18,26 @@ ooo.get('/sort.html', function (req, res) {
     for(var z = 0;z<array.length;z++){
        array[z] = parseInt(array[z]);
     }
-    var order = buble.sort(array);
-    var result = order.join(',');
+
+    var order1;
+    var result1;
+    var sortName;
+
+    if (req.query.asc) {
+        order1 = buble.sortInc(array);
+        sortName = 'increase';
+    } else {
+        order1 = buble.sortDec(array);
+        sortName = 'decrease';
+    }
+    result1 = order1.join(',');
 
     var text = fs.readFileSync('result.html', 'UTF-8');
-    text = text.replace('{{result}}', result);
+    text = text.replace('{{result1}}', result1);
+    text = text.replace('{{order}}', sortName);
     res.send(text);
 });
 
-ooo.get('/sort/:array', function (req, res) {
-    var array = req.params.array.split(',');
-    var order = buble.sort(array);
-
-    res.send(order.join(','));
-});
 
 ooo.listen(80, function () {
     console.log('Server started');
