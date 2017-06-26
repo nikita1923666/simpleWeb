@@ -7,11 +7,22 @@ var fs = require('fs');
 
 var ooo = express();
 
-ooo.get('/', function (req, res) {
-    var text = fs.readFileSync('index.html', 'UTF-8');
-    res.send(text);
-});
+ooo.use(express.static('static'))
 
+// ooo.get('/', function (req, res) {
+//     var text = fs.readFileSync('index.html', 'UTF-8');
+//     res.send(text);
+// });
+// ooo.get('/style.css', function (req, res) {
+//     var text = fs.readFileSync('style.css', 'UTF-8');
+//     res.set('Content-Type', 'text/css');
+//     res.send(text);
+// });
+// ooo.get('/dog.jpg', function (req, res) {
+//     var buffer = fs.readFileSync('dog.jpg');
+//     res.set('Content-Type','image/jpeg');
+//     res.send(buffer);
+// });
 ooo.get('/sort.html', function (req, res) {
     var array = req.query.array.split(',');
     

@@ -1,0 +1,19 @@
+body {
+    font-family: Calibri;
+}
+
+
+h1 {
+  border-bottom: 1px solid #777777
+}
+
+label {
+    color: #440f06;
+}
+
+input[type="submit"] {
+    border: 2px solid #ff3043;
+    width: 100px;
+    padding: 2px;
+    border-radius: 5px;
+}
