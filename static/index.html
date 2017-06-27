@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <title>Simple web</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="jquery-3.2.1.js"></script>
+    <script type="application/javascript" src="browser.js">
+    </script>
 </head>
 <body>
 <h1>Sort array</h1>
+<!-- Don't do that <script type="application/javascript">-->
+    <!--document.write('<b>Text from script</b>');-->
+<!--</script>-->
 <form action="sort.html">
     <label>Enter coma delimited array of digits:</label>
     <input name="array" type="text">
@@ -15,8 +21,8 @@
 </form>
 <h1>Pictures</h1>
 <div class="buttons">
-    <input type="button" onclick="location.href='/dog.jpg';" value="German Shepherd" />
-    <input type="button" onclick="location.href='/redPanda.jpg';" value="Red Panda" />
+    <input type="button" onclick="location.href='/dog.jpg';" value="German Shepherd"/>
+    <input type="button" onclick="location.href='/redPanda.jpg';" value="Red Panda"/>
 </div>
 <h1>Quadratic Equation Calculator</h1>
 <form action="solve.html">
@@ -29,5 +35,14 @@
     <label> = 0</label>
     <input type="submit" name="coefficients" value="Calculate">
 </form>
+<h1>Browser scripts</h1>
+<button type="button" onclick="toggleList()">Script</button>
+<ul id="list">
+    <li>Dog 1</li>
+    <li>Dog 2</li>
+    <li>Dog 3</li>
+    <li>Dog 4</li>
+    <li>Dog 5</li>
+</ul>
 </body>
 </html>
