@@ -28,5 +28,19 @@ function sortDec(order) {
     return order;
 }
 
+function solve1(a,b,c){
+    var x1;
+    var d = b*b - 4*a*c;
+    x1 = (-b + Math.sqrt(d))/(2*a);
+    return x1;
+}
+function solve2(a,b,c){
+    var x2;
+    var d = b*b - 4*a*c;
+    x2 = (-b - Math.sqrt(d))/(2*a);
+    return x2;
+}
 exports.sortInc = sortInc;
 exports.sortDec = sortDec;
+exports.solve1 = solve1;
+exports.solve2 = solve2;
