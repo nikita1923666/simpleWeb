@@ -10,9 +10,9 @@ var ooo = express();
 ooo.use(express.static('static'))
 ooo.get('/sort.html', function (req, res) {
     var array = req.query.array.split(',');
-    
-    for(var z = 0;z<array.length;z++){
-       array[z] = parseInt(array[z]);
+
+    for (var z = 0; z < array.length; z++) {
+        array[z] = parseInt(array[z]);
     }
 
     var order1;
@@ -38,12 +38,33 @@ ooo.get('/solve.html', function (req, res) {
     var a = req.query.a;
     var b = req.query.b;
     var c = req.query.c;
-    var x1 = buble.solve1(a,b,c);
-    var x2 = buble.solve2(a,b,c);
+    var x1 = buble.solve1(a, b, c);
+    var x2 = buble.solve2(a, b, c);
     var text = fs.readFileSync('solve.html', 'UTF-8');
     text = text.replace('{{x1}}', x1);
     text = text.replace('{{x2}}', x2);
     res.send(text);
+});
+
+ooo.get('/solve.api', function (req, res) {
+    var a = req.query.a;
+    var b = req.query.b;
+    var c = req.query.c;
+    var x1 = buble.solve1(a, b, c);
+    var x2 = buble.solve2(a, b, c);
+    if ((b*b-4*a*c)<0) {
+        res.status(404).send('This equation doesnt have roots because the discriminat is negative.');
+        return;
+    }
+    var result = {
+        a: a,
+        b: b,
+        c: c,
+        x1: x1,
+        x2: x2
+    };
+
+    res.json(result);
 });
 
 ooo.listen(80, function () {

@@ -35,8 +35,21 @@
     <label> = 0</label>
     <input type="submit" name="coefficients" value="Calculate">
 </form>
+<h1>Quadratic Equation Calculator (AJAX)</h1>
+<form id="ajaxCalc">
+    <p>Enter the coeficience of your equation of the form: ax² + bx + c = 0</p>
+    <input name="a" type="number" onkeydown="clearResult()">
+    <label>X² + </label>
+    <input name="b" type="number" onkeydown="clearResult()">
+    <label>X +</label>
+    <input name="c" type="number" onkeydown="clearResult()">
+    <label> = 0</label>
+    <button type="button" onclick="ajaxCalc()">Calculate</button>
+    <div id="result"></div>
+</form>
 <h1>Browser scripts</h1>
 <button type="button" onclick="toggleList()">Script</button>
+<button type="button" onclick="insert()">Insert</button>
 <ul id="list">
     <li>Dog 1</li>
     <li>Dog 2</li>

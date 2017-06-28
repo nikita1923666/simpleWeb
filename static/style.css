@@ -34,6 +34,23 @@ input[type="button"]:last-child {
     text-align: center;
 }
 
+.solve, .error{
+    margin-top: 5px;
+    padding: 3px;
+
+}
+
+.solve {
+    border: 1px solid black;
+}
+
+.solve p {
+    font-style: italic;
+}
+ .error{
+    border: 1px solid red;
+    border-radius: 10px;
+}
 /*#list {*/
     /*display: none;*/
 /*}*/
