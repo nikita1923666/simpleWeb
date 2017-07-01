@@ -40,7 +40,23 @@ function solve2(a,b,c){
     x2 = (-b - Math.sqrt(d))/(2*a);
     return x2;
 }
+
+function search(name){
+    var fs = require('fs');
+    var text = fs.readFileSync('names.txt', 'utf8');
+    var persons = JSON.parse(text);
+    var person = [];
+    for (var i = 0; i < persons.length; i++) {
+        if (persons[i].name.indexOf(name) === 0) {
+            person.push(persons[i]);
+        }
+    }
+    return person;
+}
+
+
 exports.sortInc = sortInc;
 exports.sortDec = sortDec;
 exports.solve1 = solve1;
 exports.solve2 = solve2;
+exports.search = search;

@@ -63,15 +63,15 @@ ooo.get('/solve.api', function (req, res) {
         x1: x1,
         x2: x2
     };
-    ooo.get('/search.api', function (req, res) {
-        var name = req.query.name;
-        var person = buble.search(name);
-        var found = {
-            name: name,
-            person: person,
-        };
     res.json(result);
 });
+ooo.get('/search.api', function (req, res) {
+    var name = req.query.name;
+    var person = buble.search(name);
+    var found = {
+        name: name,
+        person: person,
+    };
     res.json(found);
 });
 ooo.listen(8080, function () {

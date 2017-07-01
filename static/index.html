@@ -57,5 +57,13 @@
     <li>Dog 4</li>
     <li>Dog 5</li>
 </ul>
+<h1>Data Base search</h1>
+<form id="ajaxSearch" onsubmit="return false">
+    <p>The data base has 300 people on the list!</p>
+    <label>Enter the first name of the person that you want to find:</label>
+    <input name="name" type="string">
+    <button type="button" onclick="ajaxSearch()">Find</button>
+    <div id="found"></div>
+</form>
 </body>
 </html>

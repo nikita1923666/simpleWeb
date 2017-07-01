@@ -39,7 +39,10 @@ input[type="button"]:last-child {
     padding: 3px;
 
 }
-
+.purple{
+    color: purple;
+    front: italic;
+}
 .solve {
     border: 1px solid black;
 }
@@ -51,6 +54,13 @@ input[type="button"]:last-child {
     border: 1px solid red;
     border-radius: 10px;
 }
-/*#list {*/
-    /*display: none;*/
-/*}*/
+
+ #found table {
+     border-collapse: collapse;
+ }
+
+ #found th, #found td {
+     text-align: left;
+     border: 1px solid gray;
+     padding: 3px 7px 3px 7px;
+ }

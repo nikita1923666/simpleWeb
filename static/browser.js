@@ -21,15 +21,9 @@ function insert() {
 
 function ajaxCalc() {
     var form = $('#ajaxCalc');
-    var inputA = form.find('input[name="a"]');
-    var inputB = form.find('input[name="b"]');
-    var inputC = form.find('input[name="c"]');
 
-    var a = inputA.val();
-    var b = inputB.val();
-    var c = inputC.val();
 
-    var url = '/solve.api?a=' + a + '&b=' + b + '&c=' + c;
+    var url = '/solve.api?' + form.serialize();
 //(a to ooo< query.a)a='a'(from value of input here)
     $.ajax(url, {
         success: displayResult,
@@ -69,4 +63,39 @@ function showError(resp) {
 function clearResult() {
     var resPad = $('#result');
     resPad.hide();
+}
+
+function ajaxSearch() {
+    var form = $('#ajaxSearch');
+    var url = '/search.api?' + form.serialize();
+    $.ajax(url, {
+        success: displaySearch,
+    })
+}
+function displaySearch(data) {
+    var a = $('#found');
+    a.html('');
+    if (data.person && data.person.length) {
+        var table = $(
+            '<table>' +
+               '<tr>' +
+                '<th>Number</th>'+
+                  '<th>Name</th>' +
+                  '<th>Last Name</th>' +
+                  '<th>Age</th>' +
+               '</tr>' +
+            '</table>');
+        data.person.forEach(function (person, n) {
+            table.append(
+                '<tr>' +
+                '<td>' + (n+1) +'</td>' +
+                   '<td>' + person.name +'</td>' +
+                   '<td>' + person.surname + '</td>' +
+                   '<td>' + person.age + '</td>' +
+                '</tr>');
+        });
+
+        a.append(table);
+    }
+
 }
