@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="searchApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+<div ng-controller="searchPageController">
+    <h1>Data base search</h1>
+    <label>Name:</label> <input type="text" ng-model="name">
+    <button ng-click="search()">Search</button>
+
+    <div id="found" ng-if="result.length">
+        <h1>Result</h1>
+        <table>
+            <tr>
+                <th>N</th>
+                <th>Name</th>
+                <th>Last name</th>
+                <th>Age</th>
+            </tr>
+            <tr ng-repeat="person in result">
+                <td>{{$index+1}}</td>
+                <td>{{person.name}}</td>
+                <td>{{person.surname}}</td>
+                <td>{{person.age}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div ng-controller="solvePageController">
+        <h1>Quadratic Equation Calculator Angular</h1>
+        <p>Enter the coeficience of your equation of the form: ax² + bx + c = 0</p>
+        <input type="number" ng-model="a">
+        <label>X² + </label>
+        <input type="number" ng-model="b">
+        <label>X +</label>
+        <input type="number" ng-model="c">
+        <label> = 0</label>
+
+        <button ng-click="solve()">Solve</button>
+
+        <div id="solved">
+            <p>First root for this equation-X1: {{x1}}</p>
+            <p>Second root for this equation-X2: {{x2}}</p>
+        </div>
+    </div>
+</body>
+<script src="angular.js"></script>
+<script src="module.js"></script>
+</html>
