@@ -3,51 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular</title>
-    <link rel="stylesheet" href="style.css">
-
+    <!-- http://getbootstrap.com/css !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
 
-<body>
-<div ng-controller="searchPageController">
-    <h1>Data base search</h1>
-    <label>Name:</label> <input type="text" ng-model="name">
-    <button ng-click="search()">Search</button>
+<body class="angular-body">
+<div class="container angular-container">
+    <h1>Mode</h1>
+    <div class="radio">
+        <label>
+            <input type="radio" name="type" value="s" ng-model="type" checked>Search
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="type" value="q"
+                   ng-model="type">Quadratic
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input
+                    type="radio" name="type" value="c"
+                    ng-model="type">Sort
+        </label>
+    </div>
+    <div class="row" ng-if="type=== 's'">
+        <div class="col-md-12">
+            <h1>Data base search</h1>
+        </div>
+    </div>
+    <div class="row" ng-controller="searchPageController" ng-if="type=== 's'">
+        <div class="col-md-4">
+            <form>
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" ng-model="data.name" placeholder="Enter name to search">
+                </div>
+                <button ng-click="search()" class="btn btn-default">Search</button>
+            </form>
+        </div>
 
-    <div id="found" ng-if="result.length">
-        <h1>Result</h1>
-        <table>
-            <tr>
-                <th>N</th>
-                <th>Name</th>
-                <th>Last name</th>
-                <th>Age</th>
-            </tr>
-            <tr ng-repeat="person in result">
-                <td>{{$index+1}}</td>
-                <td>{{person.name}}</td>
-                <td>{{person.surname}}</td>
-                <td>{{person.age}}</td>
-            </tr>
-        </table>
+        <div id="found" ng-if="result.length" class="col-md-8">
+            <h2>Result</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>N</th>
+                    <th>Name</th>
+                    <th>Last name</th>
+                    <th>Age</th>
+                </tr>
+                <tr ng-repeat="person in result">
+                    <td>{{$index+1}}</td>
+                    <td>{{person.name}}</td>
+                    <td>{{person.surname}}</td>
+                    <td>{{person.age}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <div ng-controller="solvePageController">
+    <div ng-controller="solvePageController" ng-if="type=== 'q'">
         <h1>Quadratic Equation Calculator Angular</h1>
         <p>Enter the coeficience of your equation of the form: ax² + bx + c = 0</p>
-        <input type="number" ng-model="a">
+        <input type="number" ng-model="a" ng-change="clearRes()">
         <label>X² + </label>
-        <input type="number" ng-model="b">
+        <input type="number" ng-model="b" ng-change="clearRes()">
         <label>X +</label>
-        <input type="number" ng-model="c">
+        <input type="number" ng-model="c" ng-change="clearRes()">
         <label> = 0</label>
 
         <button ng-click="solve()">Solve</button>
 
-        <div id="solved">
+        <div id="solved" ng-if="solved">
             <p>First root for this equation-X1: {{x1}}</p>
             <p>Second root for this equation-X2: {{x2}}</p>
         </div>
+
+        <div ng-if="error">
+            <p>Error {{error}}</p>
+        </div>
     </div>
+
+    <!--<div ng-controller="sortPageController" ng-if="type=== 'c'">-->
+    <!--<h1>Sort array</h1>-->
+
+    <!--<label>Enter coma delimited array of digits:</label>-->
+    <!--<input type="text" ng-model="array">-->
+
+    <!--<button ng-click="sort()">Solve</button>-->
+    <!--<input type="radio" name="choice" value="dec" ng-model="type">Sort by increase<input type="radio" name="choice" value="inc"-->
+    <!--ng-model="type">Sort by decrease-->
+    <!--<div></div>-->
+    <!--</div>-->
+    <div class="row footer">
+        <div class="col-md-12">
+            <h1></h1>
+            <span>© Nikita test 2017</span>
+        </div>
+    </div>
+</div>
 </body>
 <script src="angular.js"></script>
 <script src="module.js"></script>

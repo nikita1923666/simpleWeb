@@ -1,5 +1,9 @@
-body {
-    font-family: Calibri;
+.angular-body {
+    background: deepskyblue;
+}
+
+.angular-container {
+    background: white;
 }
 
 
@@ -55,12 +59,20 @@ input[type="button"]:last-child {
     border-radius: 10px;
 }
 
- #found table {
-     border-collapse: collapse;
+ .footer {
+     height: 200px;
  }
 
- #found th, #found td {
-     text-align: left;
-     border: 1px solid gray;
-     padding: 3px 7px 3px 7px;
+ .footer span {
+     font-size: 80%;
  }
+
+ /*#found table {*/
+     /*border-collapse: collapse;*/
+ /*}*/
+
+ /*#found th, #found td {*/
+     /*text-align: left;*/
+     /*border: 1px solid gray;*/
+     /*padding: 3px 7px 3px 7px;*/
+ /*}*/

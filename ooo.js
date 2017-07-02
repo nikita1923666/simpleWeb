@@ -2,12 +2,15 @@
  * Created by Nikita on 6/15/2017.
  */
 var express = require('express');
+var bodyParser = require('body-parser');
 var buble = require('./buble');
 var fs = require('fs');
 
 var ooo = express();
 
-ooo.use(express.static('static'))
+ooo.use(express.static('static'));
+ooo.use(bodyParser.json());
+
 ooo.get('/sort.html', function (req, res) {
     var array = req.query.array.split(',');
 
@@ -65,6 +68,7 @@ ooo.get('/solve.api', function (req, res) {
     };
     res.json(result);
 });
+
 ooo.get('/search.api', function (req, res) {
     var name = req.query.name;
     var person = buble.search(name);
@@ -74,6 +78,17 @@ ooo.get('/search.api', function (req, res) {
     };
     res.json(found);
 });
+
+ooo.post('/search.api', function (req, res) {
+    var name = req.body.name;
+    var person = buble.search(name);
+    var found = {
+        name: name,
+        person: person,
+    };
+    res.json(found);
+});
+
 ooo.listen(8080, function () {
     console.log('Server started');
 });
