@@ -28,27 +28,36 @@ function sortDec(order) {
     return order;
 }
 
-function solve1(a,b,c){
+function solve1(a, b, c) {
     var x1;
-    var d = b*b - 4*a*c;
-    x1 = (-b + Math.sqrt(d))/(2*a);
+    var d = b * b - 4 * a * c;
+    x1 = (-b + Math.sqrt(d)) / (2 * a);
     return x1;
 }
-function solve2(a,b,c){
+function solve2(a, b, c) {
     var x2;
-    var d = b*b - 4*a*c;
-    x2 = (-b - Math.sqrt(d))/(2*a);
+    var d = b * b - 4 * a * c;
+    x2 = (-b - Math.sqrt(d)) / (2 * a);
     return x2;
 }
 
-function search(name){
+function search(name, flag) {
     var fs = require('fs');
     var text = fs.readFileSync('names.txt', 'utf8');
     var persons = JSON.parse(text);
     var person = [];
-    for (var i = 0; i < persons.length; i++) {
-        if (persons[i].name.indexOf(name) === 0) {
-            person.push(persons[i]);
+    if (flag === 'fn') {
+        for (var i = 0; i < persons.length; i++) {
+            if (persons[i].name.indexOf(name) === 0) {
+                person.push(persons[i]);
+            }
+        }
+    }
+    else if(flag === 'ln') {
+        for (var i = 0; i < persons.length; i++) {
+            if (persons[i].surname.indexOf(name) === 0) {
+                person.push(persons[i]);
+            }
         }
     }
     return person;

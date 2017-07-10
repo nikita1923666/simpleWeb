@@ -11,36 +11,48 @@
 
 <body class="angular-body">
 <div class="container angular-container">
-    <h1>Mode</h1>
-    <div class="radio">
-        <label>
-            <input type="radio" name="type" value="s" ng-model="type" checked>Search
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" name="type" value="q"
-                   ng-model="type">Quadratic
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input
-                    type="radio" name="type" value="c"
-                    ng-model="type">Sort
-        </label>
-    </div>
-    <div class="row" ng-if="type=== 's'">
-        <div class="col-md-12">
-            <h1>Data base search</h1>
+    <div>
+        <h1>Mode</h1>
+        <div class="radio">
+            <label>
+                <input type="radio" name="type" value="s" ng-model="type" checked>Search
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="type" value="q"
+                       ng-model="type">Quadratic
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input
+                        type="radio" name="type" value="c"
+                        ng-model="type">Sort
+            </label>
+        </div>
+        <div class="row" ng-if="type=== 's'">
+            <div class="col-md-12">
+                <h1>Data base search</h1>
+            </div>
         </div>
     </div>
     <div class="row" ng-controller="searchPageController" ng-if="type=== 's'">
         <div class="col-md-4">
             <form>
+                <div class="radio">
+                    <label><input type="radio" name="name" ng-model="data.flag" ng-value="'fn'" checked>First Name</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="name" ng-model="data.flag" ng-value="'ln'" checked>Last Name</label>
+                </div>
                 <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" class="form-control" ng-model="data.name" placeholder="Enter name to search">
+
+                    <!--<input type="text" class="form-control"  ng-model="data.name"-->
+                           <!--placeholder="Enter {{data.flag==='fn' ? 'first' : 'last'}} name to search">-->
+                <!--</div>-->
+                    <input type="text" class="form-control"  ng-model="data.name"
+                           placeholder="Enter {{ { fn: 'first', ln: 'last'}[data.flag] }} name to search">
                 </div>
                 <button ng-click="search()" class="btn btn-default">Search</button>
             </form>

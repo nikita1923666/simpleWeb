@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="searchApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Base</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+</head>
+<body class="angular-body">
+<div class="container angular-container" ng-controller="dataBaseController">
+    <div class="row">
+        <div class="col-md-4">
+            <form name="frm1">
+                <div class="form-group has-feedback" ng-class="{'has-success': frm1.firstName.$valid, 'has-error': !frm1.firstName.$valid }" >
+                    <label for="firstName">First name:</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName"
+                           ng-model="data.name" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-if="frm1.firstName.$valid"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-if="!frm1.firstName.$valid"></span>
+                </div>
+                <div class="form-group has-feedback" ng-class="{'has-success': frm1.lastName.$valid, 'has-error': !frm1.lastName.$valid }">
+                    <label for="lastName">Last name:</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
+                           name="lastName"
+                           ng-model="data.surname" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-if="frm1.lastName.$valid"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-if="!frm1.lastName.$valid"></span>
+                </div>
+                <div class="form-group" >
+                    <label for="gender">Gender:</label>
+                    <select class="form-control" id="gender" ng-model="data.gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="region">Region:</label>
+                    <select class="form-control" id="region" ng-model="data.region" required>
+                        <option value="Russia">Russia</option>
+                        <option value="USA">USA</option>
+                    </select>
+                </div>
+                <div class="form-group has-feedback" ng-class="{'has-success': frm1.age.$valid, 'has-error': !frm1.age.$valid }">
+                    <label for="age">Age:</label>
+                    <input type="integer" class="form-control" id="age" placeholder="Age" name="age"
+                           ng-model="data.age" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-if="frm1.age.$valid"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-if="!frm1.age.$valid"></span>
+                </div>
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <select class="form-control" id="title" ng-model="data.title">
+                        <option value=""></option>
+                        <option value="ms">Ms</option>
+                        <option value="mr">Mr</option>
+                        <option value="miss">Miss</option>
+                        <option value="mrs">Mrs</option>
+                        <option value="dr">Dr</option>
+                        <option value="baron">Baron</option>
+                        <option value="jr">JR</option>
+                    </select>
+                </div>
+                <div class="form-group has-feedback" ng-class="{'has-success': frm1.phone.$valid, 'has-error': !frm1.phone.$valid }">
+                    <label for="phone">Phone:</label>
+                    <input type="integer"
+                           class="form-control"
+                           id="phone"
+                           placeholder="Enter your ten digit number"
+                           ng-model="data.phone"
+                           required
+                           name="phone">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-if="frm1.phone.$valid"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-if="!frm1.phone.$valid"></span>
+                </div>
+                <div class="form-group has-feedback" ng-class="{'has-success': frm1.email.$valid, 'has-error': !frm1.email.$valid }">
+                    <label for="email">Email address:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="email" name="email"
+                           ng-model="data.email"
+                           placeholder="Email"
+                           required
+                           ng-pattern="emailPattern"
+                           name="email"/>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-if="frm1.email.$valid"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-if="!frm1.email.$valid"></span>
+                </div>
+                <div class="form-group has-feedback" ng-class="{'has-success': frm1.password.$valid, 'has-error': !frm1.password.$valid }">
+                    <label for="password">Password:</label>
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           placeholder="Password"
+                           ng-model="data.password"
+                           required
+                           name="password"/>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-if="frm1.password.$valid"></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-if="!frm1.password.$valid"></span>
+                </div>
+                <!--<div class="error-message" ng-if="errM">-->
+                    <!--Error: {{errM}}-->
+                <!--</div>-->
+                <button class="btn btn-default" ng-disabled="!frm1.$valid" ng-click="save()">Save</button>
+                <div class="spinner" ng-if="saving">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="angular.js"></script>
+<script src="module.js"></script>
+</html>
